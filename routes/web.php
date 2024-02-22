@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\CustomerController;
+
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +18,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::middleware(['admin'])->group(function() {
+//     Route::get('/admin', [AdminController::class, 'index']);
+// });
+
+// Route::middleware(['customer'])->group(function() {
+//     Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+// });
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
