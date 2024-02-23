@@ -20,6 +20,5 @@ class Book extends Model
         'language',
         'page_count',
         'price',
-        'year',
     ];
 }
