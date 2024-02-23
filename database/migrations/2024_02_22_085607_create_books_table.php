@@ -15,15 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('author');
-            $table->text('description');
+            $table->text('description')->nullable()->change();
             $table->string('publisher');
-            $table->year('publish_year');
+            $table->string('publish_year');
             $table->string('ibsn')->unique();
             $table->string('genre');
             $table->string('language');
             $table->integer('page_count');
             $table->decimal('price', 10, 2);
-            $table->year('year');
             $table->timestamps();
         });
     }
