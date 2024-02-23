@@ -26,7 +26,9 @@ class Admin
         }
 
         if(Auth::user()->role == 2) {
-            return redirect()->route('user');
+            return redirect()->route('customer');
         }
+
+        return redirect()->route('login');
     }
 }
