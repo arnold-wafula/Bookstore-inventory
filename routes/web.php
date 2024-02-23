@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\CustomerController;
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -29,8 +30,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['admin'])->group(function() {
-    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::post('/admin', [AdminController::class, 'store']);
+    
+    Route::get('/book', [BookController::class, 'index'])->name('book');
+    Route::post('/book', [BookController::class,'store']);
+    Route::get('/display', [BookController::class, 'display'])->name('display');
 });
 
 Route::middleware(['customer'])->group(function() {
