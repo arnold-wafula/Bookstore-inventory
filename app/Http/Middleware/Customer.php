@@ -28,5 +28,7 @@ class Customer
         if(Auth::user()->role == 2) {
             return $next($request);
         }
+
+        return redirect()->route('login');
     }
 }
