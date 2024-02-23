@@ -33,10 +33,10 @@
 
             <div class="col-md-4">
                 <label for="country">Country</label>
-                <select name="country" id="form-control">
+                <select name="country" class="form-control">
                     <option value="">Select Country</option>
                     @foreach($countries as $country)
-                        <option value="{{$countries->id}}">{{ $countries->country_name }}</option>
+                    <option value="{{$country->id}}">{{ $country->country_name }}</option>
                     @endforeach
                 </select>
             </div>
