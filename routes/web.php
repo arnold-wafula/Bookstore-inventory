@@ -21,17 +21,20 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+// Route::get('/admin', [AdminController::class, 'index']);
+// Route::post('/admin', [AdminController::class, 'store']);
+
+// Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
 
 Auth::routes();
 
-// Route::middleware(['admin'])->group(function() {
-//     Route::get('/admin', [AdminController::class, 'index']);
-// });
+Route::middleware(['admin'])->group(function() {
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::post('/admin', [AdminController::class, 'store']);
+});
 
-// Route::middleware(['customer'])->group(function() {
-//     Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
-// });
+Route::middleware(['customer'])->group(function() {
+    Route::get('/customer', [CustomerController::class, 'index']);
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
