@@ -19,13 +19,8 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view(Auth::check() ? 'home' : 'auth.login');
 });
-
-// Route::get('/admin', [AdminController::class, 'index']);
-// Route::post('/admin', [AdminController::class, 'store']);
-
-// Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
 
 Auth::routes();
 
